@@ -1,0 +1,20 @@
+service: AkkaHttpBookstore
+
+provider:
+  name: aws
+  runtime: java8
+
+package:
+  individually: true
+  exclude:
+    - ./**
+
+functions:
+  bookstore:
+    handler: bookstore.Handler
+    memorySize: 128
+    timeout: 60
+    package:
+      artifact: target/scala-2.12/bookstore.jar
+      include:
+        - target/scala-2.12/bookstore.jar
